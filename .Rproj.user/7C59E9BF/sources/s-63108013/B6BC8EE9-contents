@@ -1,0 +1,959 @@
+> xc <- 2+0i
+> class(xc)
+[1] "complex"
+> x <- 1:10
+> x
+ [1]  1  2  3  4  5  6  7  8  9 10
+> y <- c(1,5,9)
+> y
+[1] 1 5 9
+> z <- vector("numeric", length=5)
+> z
+[1] 0 0 0 0 0
+> x <- c(1.1, "a")
+> x
+[1] "1.1" "a"  
+> as.integer("1.1")
+[1] 1
+> as.numeric("1.1")
+[1] 1.1
+> as.logical("1.1")
+[1] NA
+> as.logical(1.1)
+[1] TRUE
+> as.logical(as.integer("1.1"))
+[1] TRUE
+> matrix(0,nrow=2,ncol=3)
+     [,1] [,2] [,3]
+[1,]    0    0    0
+[2,]    0    0    0
+> matrix(1:6,nrow=2,ncol=3)
+     [,1] [,2] [,3]
+[1,]    1    3    5
+[2,]    2    4    6
+> x
+[1] "1.1" "a"  
+> y
+[1] 1 5 9
+> x <- 1:10
+> as.matrix(x)
+      [,1]
+ [1,]    1
+ [2,]    2
+ [3,]    3
+ [4,]    4
+ [5,]    5
+ [6,]    6
+ [7,]    7
+ [8,]    8
+ [9,]    9
+[10,]   10
+> matrix(x, nrow=2)
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    1    3    5    7    9
+[2,]    2    4    6    8   10
+> array(1:15,dim=c(2,2,2))
+, , 1
+
+     [,1] [,2]
+[1,]    1    3
+[2,]    2    4
+
+, , 2
+
+     [,1] [,2]
+[1,]    5    7
+[2,]    6    8
+
+> array(1:15,dim=c(2,2))
+     [,1] [,2]
+[1,]    1    3
+[2,]    2    4
+> x
+ [1]  1  2  3  4  5  6  7  8  9 10
+> d <- data.frame(x,x^2)
+> d
+    x x.2
+1   1   1
+2   2   4
+3   3   9
+4   4  16
+5   5  25
+6   6  36
+7   7  49
+8   8  64
+9   9  81
+10 10 100
+> d <- data.frame(x=x,x_squared=x^2)
+> d
+    x x_squared
+1   1         1
+2   2         4
+3   3         9
+4   4        16
+5   5        25
+6   6        36
+7   7        49
+8   8        64
+9   9        81
+10 10       100
+> attach(d)
+The following object is masked _by_ .GlobalEnv:
+
+    x
+
+The following object is masked from d (pos = 3):
+
+    x
+
+The following object is masked from d (pos = 4):
+
+    x
+
+> x_squared
+ [1]   1   4   9  16  25  36  49  64  81 100
+> attributes(x)
+NULL
+> attributes(d)
+$names
+[1] "x"         "x_squared"
+
+$class
+[1] "data.frame"
+
+$row.names
+ [1]  1  2  3  4  5  6  7  8  9 10
+
+> attributes(xc)
+NULL
+> mat <- matrix(x,nrow=2)
+> mat
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    1    3    5    7    9
+[2,]    2    4    6    8   10
+> attributes(mat)
+$dim
+[1] 2 5
+
+> dim(mat)
+[1] 2 5
+> nrow(mat)
+[1] 2
+> ncol(mat)
+[1] 5
+> length(x)
+[1] 10
+> length(mat)
+[1] 10
+> letters
+ [1] "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s" "t" "u" "v" "w" "x" "y"
+[26] "z"
+> month.name
+ [1] "January"   "February"  "March"     "April"     "May"       "June"      "July"      "August"   
+ [9] "September" "October"   "November"  "December" 
+> d <- data.frame(id=1:12, month=month.name)
+> d
+   id     month
+1   1   January
+2   2  February
+3   3     March
+4   4     April
+5   5       May
+6   6      June
+7   7      July
+8   8    August
+9   9 September
+10 10   October
+11 11  November
+12 12  December
+> d <- data.frame(id=1:12, month=month.name, fav=FALSE)
+> d
+   id     month   fav
+1   1   January FALSE
+2   2  February FALSE
+3   3     March FALSE
+4   4     April FALSE
+5   5       May FALSE
+6   6      June FALSE
+7   7      July FALSE
+8   8    August FALSE
+9   9 September FALSE
+10 10   October FALSE
+11 11  November FALSE
+12 12  December FALSE
+> d <- data.frame(id=1:12, month=month.name, fav=c(TRUE,FALSE))
+> d
+   id     month   fav
+1   1   January  TRUE
+2   2  February FALSE
+3   3     March  TRUE
+4   4     April FALSE
+5   5       May  TRUE
+6   6      June FALSE
+7   7      July  TRUE
+8   8    August FALSE
+9   9 September  TRUE
+10 10   October FALSE
+11 11  November  TRUE
+12 12  December FALSE
+> month
+Error: object 'month' not found
+> d$month
+ [1] "January"   "February"  "March"     "April"     "May"       "June"      "July"      "August"   
+ [9] "September" "October"   "November"  "December" 
+> d$fav
+ [1]  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE
+> attach(d)
+> month
+ [1] "January"   "February"  "March"     "April"     "May"       "June"      "July"      "August"   
+ [9] "September" "October"   "November"  "December" 
+> fav
+ [1]  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE
+> month <- 1
+> d
+   id     month   fav
+1   1   January  TRUE
+2   2  February FALSE
+3   3     March  TRUE
+4   4     April FALSE
+5   5       May  TRUE
+6   6      June FALSE
+7   7      July  TRUE
+8   8    August FALSE
+9   9 September  TRUE
+10 10   October FALSE
+11 11  November  TRUE
+12 12  December FALSE
+> month
+[1] 1
+> d <- data.frame(id=1:12, month=month.name, fav=FALSE)
+> matrix(1:5, nrow=2, ncol=5)
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    1    3    5    2    4
+[2,]    2    4    1    3    5
+> data.frame(id=1:12, month=month.name, fav=c(TRUE,TRUE,FALSE))
+   id     month   fav
+1   1   January  TRUE
+2   2  February  TRUE
+3   3     March FALSE
+4   4     April  TRUE
+5   5       May  TRUE
+6   6      June FALSE
+7   7      July  TRUE
+8   8    August  TRUE
+9   9 September FALSE
+10 10   October  TRUE
+11 11  November  TRUE
+12 12  December FALSE
+> data.frame(id=1:12, month=month.name, fav=c(TRUE,FALSE,FALSE, ...))
+> x
+ [1]  1  2  3  4  5  6  7  8  9 10
+> dim(x) <- c(2,5)
+> x
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    1    3    5    7    9
+[2,]    2    4    6    8   10
+> x <- 1:10
+> dim(x) <- c(2,3)
+Error in dim(x) <- c(2, 3) : 
+  dims [product 6] do not match the length of object [10]
+> dim(x) <- c(5,3)
+Error in dim(x) <- c(5, 3) : 
+  dims [product 15] do not match the length of object [10]
+> 
+> 
+> 1:10
+ [1]  1  2  3  4  5  6  7  8  9 10
+> seq(1,2,0.1)
+ [1] 1.0 1.1 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 2.0
+> seq(1,2,by=0.1)
+ [1] 1.0 1.1 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 2.0
+> 
+> seq(1,2,length=6)
+[1] 1.0 1.2 1.4 1.6 1.8 2.0
+> seq(1,2,length=7)
+[1] 1.000000 1.166667 1.333333 1.500000 1.666667 1.833333 2.000000
+> 1:10
+ [1]  1  2  3  4  5  6  7  8  9 10
+> seq(1,10)
+ [1]  1  2  3  4  5  6  7  8  9 10
+> rep(0,100)
+  [1] 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ [50] 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ [99] 0 0
+> rep(1:3,5)
+ [1] 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3
+> data.frame(id=1:12, month=month.name, fav=rep(FALSE,12))
+   id     month   fav
+1   1   January FALSE
+2   2  February FALSE
+3   3     March FALSE
+4   4     April FALSE
+5   5       May FALSE
+6   6      June FALSE
+7   7      July FALSE
+8   8    August FALSE
+9   9 September FALSE
+10 10   October FALSE
+11 11  November FALSE
+12 12  December FALSE
+> data.frame(id=1:12, month=month.name, fav=c(True, rep(False,11))
++ )
+Error in data.frame(id = 1:12, month = month.name, fav = c(True, rep(False,  : 
+  object 'True' not found
+> data.frame(id=1:12, month=month.name, fav=c(TRUE, rep(FALSE,11)))
+   id     month   fav
+1   1   January  TRUE
+2   2  February FALSE
+3   3     March FALSE
+4   4     April FALSE
+5   5       May FALSE
+6   6      June FALSE
+7   7      July FALSE
+8   8    August FALSE
+9   9 September FALSE
+10 10   October FALSE
+11 11  November FALSE
+12 12  December FALSE
+> data.frame(id=1:12, month=month.name, fav=c(T, rep(F,11)))
+   id     month   fav
+1   1   January  TRUE
+2   2  February FALSE
+3   3     March FALSE
+4   4     April FALSE
+5   5       May FALSE
+6   6      June FALSE
+7   7      July FALSE
+8   8    August FALSE
+9   9 September FALSE
+10 10   October FALSE
+11 11  November FALSE
+12 12  December FALSE
+> rep(1:3,5)
+ [1] 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3
+> rep(c(1,2,3),5)
+ [1] 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3
+> rep(c(1,2,3),rep(3,3,3))
+[1] 1 1 1 2 2 2 3 3 3
+> rep(1:3,c(3,3,3))
+[1] 1 1 1 2 2 2 3 3 3
+> rep(c(1,2,3),rep(3,3))
+[1] 1 1 1 2 2 2 3 3 3
+> rep(1:3,rep(3,3))
+[1] 1 1 1 2 2 2 3 3 3
+> # How to do this: 1 2 2 3 3 3 4 4 4 4 5 5 5 5 5
+> rep(1:5,rep(c(1:5)))
+ [1] 1 2 2 3 3 3 4 4 4 4 5 5 5 5 5
+> rep(1:5,rep(1,2,3,4,5))
+Error in rep(1:5, rep(1, 2, 3, 4, 5)) : invalid 'times' argument
+> rep(1:5, rep(1:5))
+ [1] 1 2 2 3 3 3 4 4 4 4 5 5 5 5 5
+> rep(c(1:5))
+[1] 1 2 3 4 5
+> rep(2)
+[1] 2
+> c(1:5)
+[1] 1 2 3 4 5
+> 1:5
+[1] 1 2 3 4 5
+> rep(1:5) # is same as rep(c(1:5))
+[1] 1 2 3 4 5
+> 1:5 # is same as rep(1:5) is same as rep(c(1:5))
+[1] 1 2 3 4 5
+> rep(1:5,1:5)
+ [1] 1 2 2 3 3 3 4 4 4 4 5 5 5 5 5
+> rep(1:10,1:5)
+Error in rep(1:10, 1:5) : invalid 'times' argument
+> rep(1:10,rep(1:5,2))
+ [1]  1  2  2  3  3  3  4  4  4  4  5  5  5  5  5  6  7  7  8  8  8  9  9  9  9 10 10 10 10 10
+> rep(1:5,2)
+ [1] 1 2 3 4 5 1 2 3 4 5
+> seq(2,9)
+[1] 2 3 4 5 6 7 8 9
+> seq(4,10,by=2)
+[1]  4  6  8 10
+> seq(3,30,length=10)
+ [1]  3  6  9 12 15 18 21 24 27 30
+> seq(6,-4,by=-2)
+[1]  6  4  2  0 -2 -4
+> rep(2,4)
+[1] 2 2 2 2
+> rep(c(1,2),4)
+[1] 1 2 1 2 1 2 1 2
+> rep(c(1,2),c(4,4))
+[1] 1 1 1 1 2 2 2 2
+> rep(1:4,4)
+ [1] 1 2 3 4 1 2 3 4 1 2 3 4 1 2 3 4
+> rep(1:4,rep(3,4))
+ [1] 1 1 1 2 2 2 3 3 3 4 4 4
+> # 6 6 6 6 6 6
+> rep(6,6)
+[1] 6 6 6 6 6 6
+> # 5 6 5 6 5 6
+> rep(c(5,6),3)
+[1] 5 6 5 6 5 6
+> rep(5:6,3)
+[1] 5 6 5 6 5 6
+> # 5 5 5 5 6 6 6 6
+> re(c(5,6), c(4,4))
+Error in re(c(5, 6), c(4, 4)) : could not find function "re"
+> rep(c(5,6), c(4,4))
+[1] 5 5 5 5 6 6 6 6
+> data.frame(table=3,index=1:10,result=rep(3:30,by=3), nrows=10,ncol=3)
+Error in data.frame(table = 3, index = 1:10, result = rep(3:30, by = 3),  : 
+  arguments imply differing number of rows: 1, 10, 28
+> data.frame(id=rep(3,10), by=(1:10), result=(seq(3,30,by=3)
+
+Error: unexpected input in "data.frame(id=rep(3,10), by=(1:10), result=(seq(3,30,by=3)‚"
+> data.frame(count=rep(3,10),no=1:10,val=seq(3,30,3))
+   count no val
+1      3  1   3
+2      3  2   6
+3      3  3   9
+4      3  4  12
+5      3  5  15
+6      3  6  18
+7      3  7  21
+8      3  8  24
+9      3  9  27
+10     3 10  30
+> data.frame(id=rep(3,10), by=(1:10), result=(seq(3,30,by=3)))
+   id by result
+1   3  1      3
+2   3  2      6
+3   3  3      9
+4   3  4     12
+5   3  5     15
+6   3  6     18
+7   3  7     21
+8   3  8     24
+9   3  9     27
+10  3 10     30
+> data.frame(table=rep(3,10), times=1:10, result=seq(3,30,by=3))
+   table times result
+1      3     1      3
+2      3     2      6
+3      3     3      9
+4      3     4     12
+5      3     5     15
+6      3     6     18
+7      3     7     21
+8      3     8     24
+9      3     9     27
+10     3    10     30
+> data.frame(table=3, times=1:10, result=seq(3,30,by=3))
+   table times result
+1      3     1      3
+2      3     2      6
+3      3     3      9
+4      3     4     12
+5      3     5     15
+6      3     6     18
+7      3     7     21
+8      3     8     24
+9      3     9     27
+10     3    10     30
+> d
+   id     month   fav
+1   1   January  TRUE
+2   2  February FALSE
+3   3     March  TRUE
+4   4     April FALSE
+5   5       May  TRUE
+6   6      June FALSE
+7   7      July  TRUE
+8   8    August FALSE
+9   9 September  TRUE
+10 10   October FALSE
+11 11  November  TRUE
+12 12  December FALSE
+> as.matrix(d)
+      id   month       fav    
+ [1,] " 1" "January"   "TRUE" 
+ [2,] " 2" "February"  "FALSE"
+ [3,] " 3" "March"     "TRUE" 
+ [4,] " 4" "April"     "FALSE"
+ [5,] " 5" "May"       "TRUE" 
+ [6,] " 6" "June"      "FALSE"
+ [7,] " 7" "July"      "TRUE" 
+ [8,] " 8" "August"    "FALSE"
+ [9,] " 9" "September" "TRUE" 
+[10,] "10" "October"   "FALSE"
+[11,] "11" "November"  "TRUE" 
+[12,] "12" "December"  "FALSE"
+> dm <- as.matrix(d)
+> colnames(dm)
+[1] "id"    "month" "fav"  
+> names(dm)
+NULL
+> names(d)
+[1] "id"    "month" "fav"  
+> colnames(d)
+[1] "id"    "month" "fav"  
+> rownames(d)
+ [1] "1"  "2"  "3"  "4"  "5"  "6"  "7"  "8"  "9"  "10" "11" "12"
+> rownames(dm)
+NULL
+> rownames(dm) <- 1:12
+> dm
+   id   month       fav    
+1  " 1" "January"   "TRUE" 
+2  " 2" "February"  "FALSE"
+3  " 3" "March"     "TRUE" 
+4  " 4" "April"     "FALSE"
+5  " 5" "May"       "TRUE" 
+6  " 6" "June"      "FALSE"
+7  " 7" "July"      "TRUE" 
+8  " 8" "August"    "FALSE"
+9  " 9" "September" "TRUE" 
+10 "10" "October"   "FALSE"
+11 "11" "November"  "TRUE" 
+12 "12" "December"  "FALSE"
+> # List
+> x <- list(1, "a", TRUE, 3.0)
+> x
+[[1]]
+[1] 1
+
+[[2]]
+[1] "a"
+
+[[3]]
+[1] TRUE
+
+[[4]]
+[1] 3
+
+> y
+[1] 1 5 9
+> x <- vector("numeric", length=5)
+> x
+[1] 0 0 0 0 0
+> x <- vector("list", length=5)
+> x
+[[1]]
+NULL
+
+[[2]]
+NULL
+
+[[3]]
+NULL
+
+[[4]]
+NULL
+
+[[5]]
+NULL
+
+> x <- list(1, y, dm)
+> x
+[[1]]
+[1] 1
+
+[[2]]
+[1] 1 5 9
+
+[[3]]
+   id   month       fav    
+1  " 1" "January"   "TRUE" 
+2  " 2" "February"  "FALSE"
+3  " 3" "March"     "TRUE" 
+4  " 4" "April"     "FALSE"
+5  " 5" "May"       "TRUE" 
+6  " 6" "June"      "FALSE"
+7  " 7" "July"      "TRUE" 
+8  " 8" "August"    "FALSE"
+9  " 9" "September" "TRUE" 
+10 "10" "October"   "FALSE"
+11 "11" "November"  "TRUE" 
+12 "12" "December"  "FALSE"
+
+> attributes(x)
+NULL
+> length(x)
+[1] 3
+> x[[2]]
+[1] 1 5 9
+> var <- x[[2]]
+> var
+[1] 1 5 9
+> x <- list(1, y, dm)
+> # Factor
+> x <- factor(c("Male", "Male", "Female", "Male", "Female"))
+> x
+[1] Male   Male   Female Male   Female
+Levels: Female Male
+> table(x)
+x
+Female   Male 
+     2      3 
+> d
+   id     month   fav
+1   1   January  TRUE
+2   2  February FALSE
+3   3     March  TRUE
+4   4     April FALSE
+5   5       May  TRUE
+6   6      June FALSE
+7   7      July  TRUE
+8   8    August FALSE
+9   9 September  TRUE
+10 10   October FALSE
+11 11  November  TRUE
+12 12  December FALSE
+> d <- data.frame(id=1:12, month=month.name, season=c(rep("Winter",2),rep("Spring",2),rep("Summer",4), rep("Autumn",2),rep("Winter",2)))
+> d
+   id     month season
+1   1   January Winter
+2   2  February Winter
+3   3     March Spring
+4   4     April Spring
+5   5       May Summer
+6   6      June Summer
+7   7      July Summer
+8   8    August Summer
+9   9 September Autumn
+10 10   October Autumn
+11 11  November Winter
+12 12  December Winter
+> d <- data.frame(id=1:12, month=month.name, season=factor(c(rep("Winter",2),rep("Spring",2),rep("Summer",4), rep("Autumn",2),rep("Winter",2))))
+> d
+   id     month season
+1   1   January Winter
+2   2  February Winter
+3   3     March Spring
+4   4     April Spring
+5   5       May Summer
+6   6      June Summer
+7   7      July Summer
+8   8    August Summer
+9   9 September Autumn
+10 10   October Autumn
+11 11  November Winter
+12 12  December Winter
+> d <- data.frame(id=1:12, month=month.name, season=c(rep("Winter",2),rep("Spring",2),rep("Summer",4), rep("Autumn",2),rep("Winter",2)))
+> df <- data.frame(id=1:12, month=month.name, season=factor(c(rep("Winter",2),rep("Spring",2),rep("Summer",4), rep("Autumn",2),rep("Winter",2))))
+> d
+   id     month season
+1   1   January Winter
+2   2  February Winter
+3   3     March Spring
+4   4     April Spring
+5   5       May Summer
+6   6      June Summer
+7   7      July Summer
+8   8    August Summer
+9   9 September Autumn
+10 10   October Autumn
+11 11  November Winter
+12 12  December Winter
+> df
+   id     month season
+1   1   January Winter
+2   2  February Winter
+3   3     March Spring
+4   4     April Spring
+5   5       May Summer
+6   6      June Summer
+7   7      July Summer
+8   8    August Summer
+9   9 September Autumn
+10 10   October Autumn
+11 11  November Winter
+12 12  December Winter
+> d$season
+ [1] "Winter" "Winter" "Spring" "Spring" "Summer" "Summer" "Summer" "Summer" "Autumn" "Autumn" "Winter"
+[12] "Winter"
+> df$season
+ [1] Winter Winter Spring Spring Summer Summer Summer Summer Autumn Autumn Winter Winter
+Levels: Autumn Spring Summer Winter
+> df <- data.frame(id=1:12, month=month.name, season=factor(c(rep("Winter",2),rep("Spring",2),rep("Summer",4), rep("Autumn",2),rep("Winter",2)),levels=c("Spring", "Summer", "Autumn", "Winter"))
++ )
+> df$season
+ [1] Winter Winter Spring Spring Summer Summer Summer Summer Autumn Autumn Winter Winter
+Levels: Spring Summer Autumn Winter
+> season <- factor(c(rep("Winter",2),rep("Spring",2),rep("Summer",4), rep("Autumn",2),rep("Winter",2)),levels=c("Spring", "Summer", "Autumn", "Winter")
++ )
+> season
+ [1] Winter Winter Spring Spring Summer Summer Summer Summer Autumn Autumn Winter Winter
+Levels: Spring Summer Autumn Winter
+> season <- factor(c(rep("Winter",2),rep("Spring",2),rep("Summer",4), rep("Autumn",2),rep("Winter",2)))
+> season
+ [1] Winter Winter Spring Spring Summer Summer Summer Summer Autumn Autumn Winter Winter
+Levels: Autumn Spring Summer Winter
+> table(season)
+season
+Autumn Spring Summer Winter 
+     2      2      4      4 
+> table(df)
+, , season = Spring
+
+    month
+id   April August December February January July June March May November October September
+  1      0      0        0        0       0    0    0     0   0        0       0         0
+  2      0      0        0        0       0    0    0     0   0        0       0         0
+  3      0      0        0        0       0    0    0     1   0        0       0         0
+  4      1      0        0        0       0    0    0     0   0        0       0         0
+  5      0      0        0        0       0    0    0     0   0        0       0         0
+  6      0      0        0        0       0    0    0     0   0        0       0         0
+  7      0      0        0        0       0    0    0     0   0        0       0         0
+  8      0      0        0        0       0    0    0     0   0        0       0         0
+  9      0      0        0        0       0    0    0     0   0        0       0         0
+  10     0      0        0        0       0    0    0     0   0        0       0         0
+  11     0      0        0        0       0    0    0     0   0        0       0         0
+  12     0      0        0        0       0    0    0     0   0        0       0         0
+
+, , season = Summer
+
+    month
+id   April August December February January July June March May November October September
+  1      0      0        0        0       0    0    0     0   0        0       0         0
+  2      0      0        0        0       0    0    0     0   0        0       0         0
+  3      0      0        0        0       0    0    0     0   0        0       0         0
+  4      0      0        0        0       0    0    0     0   0        0       0         0
+  5      0      0        0        0       0    0    0     0   1        0       0         0
+  6      0      0        0        0       0    0    1     0   0        0       0         0
+  7      0      0        0        0       0    1    0     0   0        0       0         0
+  8      0      1        0        0       0    0    0     0   0        0       0         0
+  9      0      0        0        0       0    0    0     0   0        0       0         0
+  10     0      0        0        0       0    0    0     0   0        0       0         0
+  11     0      0        0        0       0    0    0     0   0        0       0         0
+  12     0      0        0        0       0    0    0     0   0        0       0         0
+
+, , season = Autumn
+
+    month
+id   April August December February January July June March May November October September
+  1      0      0        0        0       0    0    0     0   0        0       0         0
+  2      0      0        0        0       0    0    0     0   0        0       0         0
+  3      0      0        0        0       0    0    0     0   0        0       0         0
+  4      0      0        0        0       0    0    0     0   0        0       0         0
+  5      0      0        0        0       0    0    0     0   0        0       0         0
+  6      0      0        0        0       0    0    0     0   0        0       0         0
+  7      0      0        0        0       0    0    0     0   0        0       0         0
+  8      0      0        0        0       0    0    0     0   0        0       0         0
+  9      0      0        0        0       0    0    0     0   0        0       0         1
+  10     0      0        0        0       0    0    0     0   0        0       1         0
+  11     0      0        0        0       0    0    0     0   0        0       0         0
+  12     0      0        0        0       0    0    0     0   0        0       0         0
+
+, , season = Winter
+
+    month
+id   April August December February January July June March May November October September
+  1      0      0        0        0       1    0    0     0   0        0       0         0
+  2      0      0        0        1       0    0    0     0   0        0       0         0
+  3      0      0        0        0       0    0    0     0   0        0       0         0
+  4      0      0        0        0       0    0    0     0   0        0       0         0
+  5      0      0        0        0       0    0    0     0   0        0       0         0
+  6      0      0        0        0       0    0    0     0   0        0       0         0
+  7      0      0        0        0       0    0    0     0   0        0       0         0
+  8      0      0        0        0       0    0    0     0   0        0       0         0
+  9      0      0        0        0       0    0    0     0   0        0       0         0
+  10     0      0        0        0       0    0    0     0   0        0       0         0
+  11     0      0        0        0       0    0    0     0   0        1       0         0
+  12     0      0        1        0       0    0    0     0   0        0       0         0
+
+> table(df$season)
+
+Spring Summer Autumn Winter 
+     2      4      2      4 
+> table(season)
+season
+Autumn Spring Summer Winter 
+     2      2      4      4 
+> unclass(season)
+ [1] 4 4 2 2 3 3 3 3 1 1 4 4
+attr(,"levels")
+[1] "Autumn" "Spring" "Summer" "Winter"
+> season
+ [1] Winter Winter Spring Spring Summer Summer Summer Summer Autumn Autumn Winter Winter
+Levels: Autumn Spring Summer Winter
+> season <- factor(c(rep("Winter",2),rep("Spring",2),rep("Summer",4), rep("Autumn",2),rep("Winter",2)))
+> 
+> # Missing values
+> # NA, NaN
+> data.frame(id=1:10,something=rep(4,10),ages=c(20,21,NA,20,20,21,22,20,20,21))
+   id something ages
+1   1         4   20
+2   2         4   21
+3   3         4   NA
+4   4         4   20
+5   5         4   20
+6   6         4   21
+7   7         4   22
+8   8         4   20
+9   9         4   20
+10 10         4   21
+> students <- data.frame(id=1:10,something=rep(4,10),ages=c(20,21,NA,20,20,21,22,20,20,21))
+> students
+   id something ages
+1   1         4   20
+2   2         4   21
+3   3         4   NA
+4   4         4   20
+5   5         4   20
+6   6         4   21
+7   7         4   22
+8   8         4   20
+9   9         4   20
+10 10         4   21
+> students$ages
+ [1] 20 21 NA 20 20 21 22 20 20 21
+> is.na(students$ages)
+ [1] FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+> is.nan(students$ages)
+ [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+> x <- c(1,2, NaN, NA, 4)
+> is.na(x)
+[1] FALSE FALSE  TRUE  TRUE FALSE
+> is.nan(x)
+[1] FALSE FALSE  TRUE FALSE FALSE
+> students$ages*2
+ [1] 40 42 NA 40 40 42 44 40 40 42
+> students$ages+2
+ [1] 22 23 NA 22 22 23 24 22 22 23
+> students$ages+4
+ [1] 24 25 NA 24 24 25 26 24 24 25
+> rownames(dm)
+ [1] "1"  "2"  "3"  "4"  "5"  "6"  "7"  "8"  "9"  "10" "11" "12"
+> dm
+   id   month       fav    
+1  " 1" "January"   "TRUE" 
+2  " 2" "February"  "FALSE"
+3  " 3" "March"     "TRUE" 
+4  " 4" "April"     "FALSE"
+5  " 5" "May"       "TRUE" 
+6  " 6" "June"      "FALSE"
+7  " 7" "July"      "TRUE" 
+8  " 8" "August"    "FALSE"
+9  " 9" "September" "TRUE" 
+10 "10" "October"   "FALSE"
+11 "11" "November"  "TRUE" 
+12 "12" "December"  "FALSE"
+> x
+[1]   1   2 NaN  NA   4
+> x <- 1:12
+> x
+ [1]  1  2  3  4  5  6  7  8  9 10 11 12
+> names(x) <- month.name
+> names
+function (x)  .Primitive("names")
+> x
+  January  February     March     April       May      June      July    August September   October 
+        1         2         3         4         5         6         7         8         9        10 
+ November  December 
+       11        12 
+> names(x) <- month.abb
+> x
+Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec 
+  1   2   3   4   5   6   7   8   9  10  11  12 
+> names(x)
+ [1] "Jan" "Feb" "Mar" "Apr" "May" "Jun" "Jul" "Aug" "Sep" "Oct" "Nov" "Dec"
+> 1:10
+ [1]  1  2  3  4  5  6  7  8  9 10
+> seq(2,10,by=0.5)
+ [1]  2.0  2.5  3.0  3.5  4.0  4.5  5.0  5.5  6.0  6.5  7.0  7.5  8.0  8.5  9.0  9.5 10.0
+> runif(5)
+[1] 0.7744750 0.3161303 0.4793855 0.8249955 0.7860300
+> runif(1)
+[1] 0.6726419
+> runif(1, 1, 100)
+[1] 71.10125
+> sample(1:10,3)
+[1] 10  4  5
+> sample(1:10,10)
+ [1]  9 10  4  6  3  1  5  8  2  7
+> x <- 1:20
+> x
+ [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20
+> sample(x, 10)
+ [1]  8 14  3  6 13 19  1 15 16 17
+> sample(x, 20)
+ [1] 12 10  5  3 13  7 14 19 16  4  1 17  9  8 20  6  2 11 18 15
+> sample(x, length(x))
+ [1]  3 11  2 13  1 10  4 19  7 17 20 16 18  8  6  9 12 15 14  5
+> x <- 1:10
+> sample(x, length(x))
+ [1]  6  5  4  9  3 10  2  7  1  8
+> sample(x, length(x), replace=TRUE)
+ [1]  6 10  8  3 10  4  2  8 10  9
+> sample(x, length(x), replace=TRUE)
+ [1] 4 8 3 9 9 3 1 8 2 9
+> sample(x, replace=TRUE)
+ [1] 4 5 7 8 9 8 1 6 3 3
+> sample(1:100, 5, replace=TRUE)
+[1] 95 22 72 18  8
+> sample(1:100, 5)
+[1] 19 85 72 99 21
+> sample(1:100, 1)
+[1] 2
+> sample(1:100, 1)
+[1] 29
+> sample(1:100, 1)
+[1] 99
+> sample(1:100, 1)
+[1] 53
+> sample(letters, 5)
+[1] "i" "m" "c" "p" "g"
+> runif(5, 1, 10)
+[1] 1.024397 5.631665 6.688802 4.553769 4.531873
+> df
+   id     month season
+1   1   January Winter
+2   2  February Winter
+3   3     March Spring
+4   4     April Spring
+5   5       May Summer
+6   6      June Summer
+7   7      July Summer
+8   8    August Summer
+9   9 September Autumn
+10 10   October Autumn
+11 11  November Winter
+12 12  December Winter
+> df$month
+ [1] "January"   "February"  "March"     "April"     "May"       "June"      "July"      "August"   
+ [9] "September" "October"   "November"  "December" 
+> sample(df$month,3)
+[1] "August"  "July"    "October"
+> sample(month.name,3)
+[1] "May"      "March"    "December"
+> sample(month.name,3, prob=c(rep(2,6),rep(1,6))
++ )
+[1] "April"    "February" "July"    
+> sample(month.name,3, prob=c(rep(2,6),rep(1,6)))
+[1] "March"    "April"    "February"
+> sample(month.name,3, prob=c(rep(2,6),rep(1,6)))
+[1] "October" "June"    "May"    
+> sample(c("Heads", "Tails"), 1)
+[1] "Tails"
+> sample(c("Heads", "Tails"), 1)
+[1] "Tails"
+> sample(c("Heads", "Tails"), 1)
+[1] "Heads"
+> sample(c("Heads", "Tails"), 1, prob=c(2,1))
+[1] "Heads"
+> sample(c("Heads", "Tails"), 1, prob=c(2,1))
+[1] "Tails"
+> sample(c("Heads", "Tails"), 1, prob=c(2,1))
+[1] "Heads"
+> sample(c("Heads", "Tails"), 1, prob=c(2,1))
+[1] "Tails"
+> sample(c("Heads", "Tails"), 1, prob=c(2,1))
+[1] "Heads"
+> sample(c("Heads", "Tails"), 1, prob=c(2,1))
+[1] "Heads"
+> sample(c("Heads", "Tails"), 1, prob=c(2,1))
+[1] "Tails"
+> sample(c("Heads", "Tails"), 1, prob=c(2,1))
+[1] "Heads"
+> sample(c("Heads", "Tails"), 1)
+[1] "Heads"
+> sample(c("Heads", "Tails"), 5)
+Error in sample.int(length(x), size, replace, prob) : 
+  cannot take a sample larger than the population when 'replace = FALSE'
+> sample(c("Heads", "Tails"), 5, replace=T)
+[1] "Heads" "Tails" "Heads" "Tails" "Heads"
+> 

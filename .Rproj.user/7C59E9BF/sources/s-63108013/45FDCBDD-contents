@@ -1,0 +1,81 @@
+#question1
+
+vector.SmallLetters.Repeated <- rep(letters, 1:26)
+print(vector.SmallLetters.Repeated)
+
+#Question2
+
+#first we have to define the elements.
+
+element.one <- 1:10
+element.two <- element.one^2
+element.three <- element.one^3
+element.four <- element.one^4
+element.five <- element.one^5
+
+#Now, we create a list that includes the above elements. 
+
+my.list <- list(element.one, element.two, element.three, element.four, element.five)
+print(my.list)
+
+#Question3
+
+#Below, used R's built-in constant which displays month names. 
+
+Months <- month.name
+
+#Below, used the rep function that would display the seasons of months in the city of Lahore.
+
+Season <- rep(c("Winter","Spring","Summer","Autumn","Winter"), c(2,2,4,2,2))
+
+#Below, used concatenate and sample functions to generate average temperatures in each month.
+#Each season's average temperature has been sampled from different subranges between 2-40 degrees to reflect reality as much as possible. 
+
+Average_Temperature <- c(sample(2:20, 2, replace = T), sample(12:30, 2, replace = T), sample(25:40, 4, replace = T), sample(15:32, 2, replace = T), sample(2:20, 2, replace = T))
+
+#Below, generated boolean values (True or False) depending on whether it usually rains in a certain month or not.
+#In Lahore, it usually rains from June to September during the Monsoon. 
+
+Rain <- rep(c(F,T,F), c(5,4,3))
+
+#Below, created and printed a data frame that includes all the data generated in the above code. 
+
+Climate.Lahore <- data.frame(Months, Season, Average_Temperature, Rain)
+print(Climate.Lahore)
+
+
+#question4
+
+#Below is a construction of three different sub-datasets, one for each group.
+
+Data_ctrl <- PlantGrowth[PlantGrowth$group == "ctrl",]
+Data_trt1 <- PlantGrowth[PlantGrowth$group == "trt1",]
+Data_trt2 <- PlantGrowth[PlantGrowth$group == "trt2",]
+
+#Below, average weights for each of the three constructed datasets are calculated. 
+
+avgWeight_ctrl <- mean(Data_ctrl$weight)
+avgWeight_trt1 <- mean(Data_trt1$weight)
+avgWeight_trt2 <- mean(Data_trt2$weight)
+
+#Below, the average weights are printed. 
+
+print(c("Average weight of ctrl group:", avgWeight_ctrl))
+print(c("Average weight of trt1 group:", avgWeight_trt1))
+print(c("Average weight of trt2 group:", avgWeight_trt2))
+
+
+#Question 5
+
+#Answer)
+
+#Following code creates a table which depicts the number of entries for each type.
+
+table(CO2$Type)
+
+#Question 5) b) Number of entries according to type and plant. 
+
+#Following code creates a table that depicts the number of entries according to each type and plant. 
+#Rows will be named by plants, columns will be named with types. 
+
+table(CO2$Plant,CO2$Type)
